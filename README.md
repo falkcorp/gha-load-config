@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: jdfalk/load-config-action@v1
+      - uses: falkcorp/gha-load-config@v1
         id: config
         with:
           config-file: .github/repository-config.yml
@@ -37,7 +37,7 @@ jobs:
 ### With Fail-On-Missing
 
 ```yaml
-- uses: jdfalk/load-config-action@v1
+- uses: falkcorp/gha-load-config@v1
   id: config
   with:
     config-file: .github/repository-config.yml
@@ -54,7 +54,7 @@ jobs:
       config: ${{ steps.config.outputs.config }}
     steps:
       - uses: actions/checkout@v6
-      - uses: jdfalk/load-config-action@v1
+      - uses: falkcorp/gha-load-config@v1
         id: config
 
   use-config:
@@ -70,12 +70,12 @@ jobs:
 
 ## Inputs
 
-| Input             | Description                                                      | Required | Default                                  |
-| ----------------- | ---------------------------------------------------------------- | -------- | ---------------------------------------- |
-| `config-file`     | Path to repository config YAML file                              | No       | `.github/repository-config.yml`          |
-| `fail-on-missing` | Fail if config file is missing                                   | No       | `false`                                  |
-| `use-docker`      | Run the action inside the published container image              | No       | `false`                                  |
-| `docker-image`    | Docker image reference (tag or digest) when `use-docker` is true | No       | `ghcr.io/jdfalk/load-config-action:main` |
+| Input             | Description                                                      | Required | Default                                 |
+| ----------------- | ---------------------------------------------------------------- | -------- | --------------------------------------- |
+| `config-file`     | Path to repository config YAML file                              | No       | `.github/repository-config.yml`         |
+| `fail-on-missing` | Fail if config file is missing                                   | No       | `false`                                 |
+| `use-docker`      | Run the action inside the published container image              | No       | `false`                                 |
+| `docker-image`    | Docker image reference (tag or digest) when `use-docker` is true | No       | `ghcr.io/falkcorp/gha-load-config:main` |
 
 ## Outputs
 
@@ -120,11 +120,11 @@ release:
 ### Force Docker execution
 
 ```yaml
-- uses: jdfalk/load-config-action@v1
+- uses: falkcorp/gha-load-config@v1
   id: config
   with:
     use-docker: true
-    docker-image: ghcr.io/jdfalk/load-config-action:main
+    docker-image: ghcr.io/falkcorp/gha-load-config:main
 ```
 
 ## Step Summary Output
